@@ -7,8 +7,9 @@ class UserLogs extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('User Logs'),
+        centerTitle: true,
         ),
-        body: Text('Success'),
+        body: Text('Success'), // Create table logs
         drawer: MyDrawer(),
     );
   }

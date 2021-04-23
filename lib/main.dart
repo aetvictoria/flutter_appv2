@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_appv2/statistics_screen.dart';
 import 'package:flutter_appv2/userlogs_screen.dart';
@@ -8,18 +9,18 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  // 
+  //
   final appTitle = 'Flutter Demo';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: appTitle,
-      
+      home: MyHomePage(
+        title: appTitle,
       ),
     );
   }
@@ -32,16 +33,63 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _HomePageState createState() => _HomePageState();
-  
-  }
-  
+}
+
 class _HomePageState extends State<MyHomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Drawer')),
-      drawer: new MyDrawer(),
+        appBar: AppBar(
+          title: Text('Dashboard'),
+          centerTitle: true,
+        ),
+        drawer: new MyDrawer(),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CategoryCard(
+                cardTitle: 'Category 1',
+              ),
+              CategoryCard(
+                cardTitle: 'Category 2',
+              ), // Category 2
+              CategoryCard(
+                cardTitle: 'Category 3',
+              ),
+              CategoryCard(
+                // Category 4
+                cardTitle: 'Category 4',
+              )
+            ],
+          ),
+        ));
+  }
+}
+
+// ignore: must_be_immutable
+class CategoryCard extends StatelessWidget {
+  final String cardTitle;
+
+  const CategoryCard({Key key, this.cardTitle}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      shadowColor: Colors.blueGrey,
+      child: SizedBox(
+          height: 300,
+          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+            ListTile(
+                //leading: LineChart(
+                  //LineChartData(
+                    //Chart here
+                  //)
+                  //), 
+                  title: Text(cardTitle)
+                )
+          ])),
     );
   }
 }
@@ -62,30 +110,29 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             title: Text('Dashboard'),
             onTap: () {
-
               Navigator.pop(context);
-              Navigator.pushReplacement(context,
-                  new MaterialPageRoute(builder: (context) => new MyHomePage()));
-
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new MyHomePage()));
             },
           ),
           ListTile(
             title: Text('Statistics'),
             onTap: () {
-
               Navigator.pop(context);
-              Navigator.pushReplacement(context,
-                  new MaterialPageRoute(builder: (context) => new StatisticsScreen()));
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => new StatisticsScreen()));
             },
           ),
           ListTile(
             title: Text('User Logs'),
             onTap: () {
-
               Navigator.pop(context);
               Navigator.pushReplacement(context,
                   new MaterialPageRoute(builder: (context) => new UserLogs()));
-
             },
           ),
         ],
@@ -131,4 +178,3 @@ class MyDrawer extends StatelessWidget {
 //     );
 //   }
 // }
-
