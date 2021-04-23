@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appv2/dashboard_screen.dart';
 import 'package:flutter_appv2/statistics_screen.dart';
 import 'package:flutter_appv2/userlogs_screen.dart';
 
@@ -10,13 +11,13 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   //
-  final appTitle = 'Flutter Demo';
+  final String appTitle = 'Flutter Demo'; // app title
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appTitle,
-      theme: ThemeData(
+      theme: ThemeData( // themes
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(
@@ -39,62 +40,27 @@ class _HomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Dashboard'),
-          centerTitle: true,
-        ),
-        drawer: new MyDrawer(),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CategoryCard(
-                cardTitle: 'Category 1',
-              ),
-              CategoryCard(
-                cardTitle: 'Category 2',
-              ), // Category 2
-              CategoryCard(
-                cardTitle: 'Category 3',
-              ),
-              CategoryCard(
-                // Category 4
-                cardTitle: 'Category 4',
-              )
-            ],
-          ),
-        ));
-  }
-}
-
-// ignore: must_be_immutable
-class CategoryCard extends StatelessWidget {
-  final String cardTitle;
-
-  const CategoryCard({Key key, this.cardTitle}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      shadowColor: Colors.blueGrey,
-      child: SizedBox(
-          height: 300,
-          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            ListTile(
-                //leading: LineChart(
-                  //LineChartData(
-                    //Chart here
-                  //)
-                  //), 
-                  title: Text(cardTitle)
-                )
-          ])),
+        drawer: new DefaultDrawer(), // calls the default drawer
+        body: new DashboardScreen() // calls the dashboard_screen
     );
   }
 }
 
-class MyDrawer extends StatelessWidget {
+class DefaultAppBar extends StatelessWidget { // default app bar; referenced throughout the app
+  final String screenTitle; // gets title of current screen
+
+  const DefaultAppBar({Key key, this.screenTitle}) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(screenTitle), // sets title to screentitle
+      centerTitle: true, // centers title
+    );
+  }
+}
+
+class DefaultDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -102,24 +68,24 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
+            child: Text('Drawer Header'), // drawer header title
+            decoration: BoxDecoration( // drawer header theme
+              color: Colors.blue, 
             ),
           ),
           ListTile(
-            title: Text('Dashboard'),
-            onTap: () {
+            title: Text('Dashboard'), // item 1 | dashboard
+            onTap: () { // when button is pushed/selected
               Navigator.pop(context);
               Navigator.pushReplacement(
                   context,
                   new MaterialPageRoute(
-                      builder: (context) => new MyHomePage()));
+                      builder: (context) => new DashboardScreen()));
             },
           ),
           ListTile(
-            title: Text('Statistics'),
-            onTap: () {
+            title: Text('Statistics'), // item 2 | statistics
+            onTap: () { // when button is pushed/selected
               Navigator.pop(context);
               Navigator.pushReplacement(
                   context,
@@ -128,11 +94,11 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('User Logs'),
-            onTap: () {
+            title: Text('User Logs'), // item 3 | user logs
+            onTap: () { // when button is pushed/selected
               Navigator.pop(context);
               Navigator.pushReplacement(context,
-                  new MaterialPageRoute(builder: (context) => new UserLogs()));
+                  new MaterialPageRoute(builder: (context) => new UserLogsScreen()));
             },
           ),
         ],
@@ -140,41 +106,3 @@ class MyDrawer extends StatelessWidget {
     );
   }
 }
-
-// class FirstRoute extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('First Route'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           child: Text('Open route'),
-//           onPressed: () {
-//             // Navigate to second route when tapped.
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class SecondRoute extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Second Route"),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             // Navigate back to first route when tapped.
-//           },
-//           child: Text('Go back!'),
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -22,7 +22,7 @@ class StatisticsScreen extends StatelessWidget {
             ],
         ),
       ),
-      drawer: MyDrawer(),
+      drawer: DefaultDrawer(),
     );
   }
 }
@@ -102,8 +102,7 @@ class StatCard extends StatelessWidget {
             Text(chartTitle)
           ],
         ),
-
-        ),
+      ),
     );
   }
 }
