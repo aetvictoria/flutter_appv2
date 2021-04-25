@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appv2/main.dart';
 
 class StatisticsScreen extends StatelessWidget {
+  // TODO: Theme and design implementation
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +29,7 @@ class StatisticsScreen extends StatelessWidget {
 }
 
 class MainStatChart extends StatelessWidget {
+  // TODO: Chart implementation 
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -43,8 +45,6 @@ class MainStatChart extends StatelessWidget {
 
 // ignore: must_be_immutable
 class StatCardHolder extends StatelessWidget {
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +81,8 @@ class StatCardHolder extends StatelessWidget {
 
 // ignore: must_be_immutable
 class StatCard extends StatelessWidget {
+  // TODO: Circular progress bar implementation 
+  // TODO: Add variable for values of progress bar
   final double elevationVar = 2;
   final double cardWidth = 188;
   final double cardHeight = 200;

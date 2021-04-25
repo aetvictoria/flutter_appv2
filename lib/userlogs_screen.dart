@@ -15,6 +15,8 @@ class UserLogsScreen extends StatelessWidget {
 
 class UserLogsTable extends StatelessWidget { // should be stateful if adding queries to table
 
+  static const double _fontSize = 18;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,28 +30,28 @@ class UserLogsTable extends StatelessWidget { // should be stateful if adding qu
       columns: const <DataColumn>[
         DataColumn(label: Text(
           'User',
-          style: TextStyle(fontSize: 12)
+          style: TextStyle(fontSize: _fontSize)
         )),
 
         DataColumn(label: Text(
           'Country',
-          style: TextStyle(fontSize: 12)
+          style: TextStyle(fontSize: _fontSize)
         )),
         
         DataColumn(label: Text(
           'Payment Method',
-          style: TextStyle(fontSize: 12)
+          style: TextStyle(fontSize: _fontSize)
         )),
         
         DataColumn(label: Text(
           'Activity',
-          style: TextStyle(fontSize: 12)
+          style: TextStyle(fontSize: _fontSize)
         ))
       ],
       
-      rows: const <DataRow>[
-        DataRow(cells: <DataCell>[
-          DataCell(Text('Admin')), 
+      rows: const <DataRow>[ 
+        DataRow(cells: <DataCell>[ 
+          DataCell(Text('Admin')), // convert placeholders to variables
           DataCell(Text('Philippines')),
           DataCell(Text('American Express')),
           DataCell(Text('5m Ago'))

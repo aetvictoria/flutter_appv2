@@ -46,7 +46,7 @@ class _HomePageState extends State<MyHomePage> {
   }
 }
 
-class DefaultAppBar extends StatelessWidget { // default app bar; referenced throughout the app
+class DefaultAppBar extends StatelessWidget { // default app bar
   final String screenTitle; // gets title of current screen
 
   const DefaultAppBar({Key key, this.screenTitle}) : super(key: key);
@@ -61,6 +61,9 @@ class DefaultAppBar extends StatelessWidget { // default app bar; referenced thr
 }
 
 class DefaultDrawer extends StatelessWidget {
+  // TODO: Highlight selected ListTile
+  // TODO: Implement color theme and design
+  // TODO: Insert placeholder asset for user icon
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -73,7 +76,8 @@ class DefaultDrawer extends StatelessWidget {
               color: Colors.blue, 
             ),
           ),
-          ListTile(
+          ListTile( 
+
             title: Text('Dashboard'), // item 1 | dashboard
             onTap: () { // when button is pushed/selected
               Navigator.pop(context);

@@ -34,6 +34,9 @@ class DashboardScreen extends StatelessWidget {
 
 // ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
+  // TODO: Line Chart implementation
+  // TODO: Variable values for Line Chart
+  // TODO: Theme and design implementation
   final String cardTitle;
 
   const CategoryCard({Key key, this.cardTitle}) : super(key: key);
