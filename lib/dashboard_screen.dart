@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appv2/main.dart';
+import 'package:flutter_appv2/statistics_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   final String _screenTitle = 'Dashboard';
@@ -24,7 +25,11 @@ class DashboardScreen extends StatelessWidget {
             ),
             CategoryCard(
               cardTitle: 'Category 4',
-            )
+            ),
+
+            MediaCard(),
+            MediaCard(),
+            MediaCard(),
           ],
         ),
       ),

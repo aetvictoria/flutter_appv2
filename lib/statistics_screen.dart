@@ -16,10 +16,7 @@ class StatisticsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             MainStatChart(), 
-            StatCardHolder(),
-            MediaCard(), 
-            MediaCard(), 
-            MediaCard()
+            StatCardContainer(),
             ],
         ),
       ),
@@ -44,7 +41,7 @@ class MainStatChart extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class StatCardHolder extends StatelessWidget {
+class StatCardContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +50,23 @@ class StatCardHolder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         
         children: [
-          Row(
+          Wrap( // Automatically wraps children
+          direction: Axis.horizontal, // Horizontal alignment
             children: [
               StatCard(
                 chartTitle: ('Visits'),
               ),
               StatCard(
                 chartTitle: ('New Users'),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              StatCard(
-                chartTitle: ('Pageviews'),
               ),
               StatCard(
-                chartTitle: ('Bounce Rate'),
+                chartTitle: ('New Users'),
+              ),
+              StatCard(
+                chartTitle: ('New Users'),
+              ),
+              StatCard(
+                chartTitle: ('New Users'),
               )
             ],
           )

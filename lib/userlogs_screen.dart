@@ -26,7 +26,8 @@ class UserLogsTable extends StatelessWidget { // should be stateful if adding qu
       //   return Theme.of(context).colorScheme.primary.withOpacity(0.08);
       //   return null;
       // }),
-      child: DataTable (
+      child: DataTable ( // TODO: Create as separate stateful widget
+      // TODO: Adjust table size to disable horizontal scroll view
       columns: const <DataColumn>[
         DataColumn(label: Text(
           'User',
@@ -61,7 +62,7 @@ class UserLogsTable extends StatelessWidget { // should be stateful if adding qu
           DataCell(Text('Admin')), 
           DataCell(Text('Philippines')),
           DataCell(Text('American Express')),
-          DataCell(Text('5m Ago'))
+          DataCell(Text('1h Ago'))
         ])
        // TableRow( // entry # 1
        
